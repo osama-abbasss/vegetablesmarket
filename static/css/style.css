@@ -387,7 +387,9 @@ mark,
 
 .img-fluid {
   max-width: 100%;
-  height: auto; }
+  height: auto;
+  /* max-height: 171px; */
+   }
 
 .img-thumbnail {
   padding: 0.25rem;
