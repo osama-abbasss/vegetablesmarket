@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'contact',
-    'orders',
     'products',
+
+    'django_filters',
 ]
 
 MIDDLEWARE = [

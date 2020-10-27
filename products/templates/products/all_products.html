@@ -20,11 +20,16 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#" class="active">All</a></li>
-    					<li><a href="#">Vegetables</a></li>
-    					<li><a href="#">Fruits</a></li>
-    					<li><a href="#">Juice</a></li>
-    					<li><a href="#">Dried</a></li>
+					
+    					<form method="get">
+							<li><button type="submit" class="btn btn-outline-light" name='category' value="0"><a class="active">All</a></button></li>
+							<li><button type="submit" class="btn btn-outline-light" name='category' value="1"><a class="active">Fruits</a></button></li>
+							<li><button type="submit" class="btn btn-outline-light" name='category' value="2"><a class="active">Vegetables</a></button></li>
+							<li><button type="submit" class="btn btn-outline-light" name='category' value="3"><a class="active">Juice</a></button></li>
+							<li><button type="submit" class="btn btn-outline-light" name='category' value="4"><a class="active">Dried</a></button></li>
+
+
+						</form>				
     				</ul>
     			</div>
     		</div>
@@ -70,21 +75,47 @@
 				{% endfor %}
 
     		</div>
+
     		<div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
+				<div class="col text-center">
+					<div class="block-27">
+						<ul>
+						{% if products.has_previous %}
+							<a href="?page=1">&laquo;&nbsp;&nbsp; first&nbsp;&nbsp;</a>
+							<a href="?page={{ products.previous_page_number }}">&nbsp;&nbsp;previous&nbsp;&nbsp;</a>
+						{% endif %}
+
+						<li>
+							<a href="#">{{ products.number }}</a>
+						</li>
+
+						{% if products.has_next %}
+	
+								<a href="?page={{ products.next_page_number }}">&nbsp;&nbsp;next&nbsp;&nbsp;</a>
+
+							<a href="?page={{ products.paginator.num_pages }}">&nbsp;&nbsp;last &raquo;</a>
+						{% endif %}
+						</ul>
+					</div>
+				</div>
+				<!--
+          		<div class="col text-center">
+            		<div class="block-27">
+              			<ul>
+							<li><a href="#">&lt;</a></li>
+							<li class="active"><span>1</span></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&gt;</a></li>
+              			</ul>
+            		</div>
+          		</div>
+				-->
+        	</div>
+
     	</div>
     </section>
 
