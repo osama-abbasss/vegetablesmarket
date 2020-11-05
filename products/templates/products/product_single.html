@@ -40,43 +40,36 @@
 						</div>
 						<p class="price"><span>${{product.price}}</span></p>
 						<p>{{ product.discription }}</p>
+
 						<div class="row mt-4">
-							<div class="col-md-6">
-								<div class="form-group d-flex">
-		              <div class="select-wrap">
-	                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                  <select name="" id="" class="form-control">
-	                  	<option value="">Small</option>
-	                    <option value="">Medium</option>
-	                    <option value="">Large</option>
-	                    <option value="">Extra Large</option>
-	                  </select>
-	                </div>
-		            </div>
-							</div>
+
+
 							<div class="w-100"></div>
+
 							<div class="input-group col-md-6 d-flex mb-3">
-	             	<span class="input-group-btn mr-2">
-	                	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-	                   <i class="ion-ios-remove"></i>
-	                	</button>
-	            		</span>
-	             	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-	             	<span class="input-group-btn ml-2">
-	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-	                     <i class="ion-ios-add"></i>
-	                 </button>
-	             	</span>
-	          	</div>
-	          	<div class="w-100"></div>
-	          	<div class="col-md-12">
-	          		<p style="color: #000;">{{product.stock}} kg available</p>
-	          	</div>
-          	</div>
-          	<p><a href="cart.html" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+								<span class="input-group-btn mr-2">
+									<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+										<i class="ion-ios-remove"></i>
+									</button>
+								</span>
+								<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1">
+								<span class="input-group-btn ml-2">
+									<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" id='add-one-more'>
+										<i class="ion-ios-add"></i>
+									</button>
+								</span>
+							</div>
+
+	          				<div class="w-100"></div>
+							<div class="col-md-12">
+								<p style="color: #000;">{{product.stock}} kg available</p>
+							</div>
+          				</div>
+          				<p><a href="{% url 'cart:add_to_cart' product.slug %}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+    				</div>
     			</div>
     		</div>
-    	</div>
+		</div>	
     </section>
 
     <section class="ftco-section">
@@ -118,7 +111,7 @@
 										<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 											<span><i class="ion-ios-menu"></i></span>
 										</a>
-										<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<a href="{% url 'cart:add_to_cart' product.slug %}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-cart"></i></span>
 										</a>
 										<a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -137,42 +130,46 @@
 
 
 	{% block exstra_scripts %}
-		  	<script>
-		$(document).ready(function(){
+		<script>
+			$(document).ready(function(){
 
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
+				var quantitiy=0;
+				$('.quantity-right-plus').click(function(e){
+					
+					// Stop acting like a button
+					e.preventDefault();
+					// Get the field name
+					var quantity = parseInt($('#quantity').val());
+					
+					// If is not undefined
+						
+						$('#quantity').val(quantity + 1);
 
-		          
-		            // Increment
-		        
-		    });
+						console.log(quantity)
+					
+						// Increment
+					
+				});
 
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
+				$('.quantity-left-minus').click(function(e){
+					// Stop acting like a button
+					e.preventDefault();
+					// Get the field name
+					var quantity = parseInt($('#quantity').val());
+					
+					// If is not undefined
+				
+						// Increment
+						if(quantity>0){
+						$('#quantity').val(quantity - 1);
+						}
+				});
 		    
-		});
-	</script>
+			});
+
+		
+
+		</script>
 
 
     {% endblock exstra_scripts %}
