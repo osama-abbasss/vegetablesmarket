@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'cart',
     'contact',
     'products',
+    'checkout',
 
     'django_filters',
+    'django_countries',
 
     
     'django.contrib.sites',
