@@ -25,19 +25,7 @@
 						<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          			<div class="row align-items-end">
 
-	          				<div class="col-md-6">
-	                			<div class="form-group">
-	                				<label for="firstname">Firt Name</label>
-	                  				<input type="text" class="form-control" placeholder="" value='{{request.user.first_name}}'>
-	               				</div>
-	              			</div>
-
-	              			<div class="col-md-6">
-	                			<div class="form-group">
-	                				<label for="lastname">Last Name</label>
-	                  				<input type="text" class="form-control" placeholder="" value='{{request.user.last_name}}'>
-	                			</div>
-                			</div>
+	          				
 
                 			<div class="w-100"></div>
 
@@ -45,7 +33,7 @@
 		            			<div class="form-group">
 		            				<label for="country">State / Country</label>
 		            				<div class="select-wrap">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<div class="icon"></div>
 										{{ form.country}}
 									</div>
 		            			</div>
@@ -81,19 +69,14 @@
 
 		            		<div class="w-100"></div>
 
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label for="phone">Phone</label>
 									<input type="text" name='mobail' class="form-control" placeholder="">
 								</div>
 							</div>
 
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email Address</label>
-									<input type="text" class="form-control" placeholder="" value={{request.user.email}}>
-								</div>
-							</div>
+							
 
                 			<div class="w-100"></div>
 
@@ -190,5 +173,3 @@
     </section>
 
 {% endblock content %}
-
-   
