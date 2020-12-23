@@ -5,12 +5,7 @@ from products.filters import ProductFilter
 
 
 def index(request):
-    products_list = Product.objects.all()
-
-    paginator = Paginator(products_list, 1) # Show 25 contacts per page.
-    page_number = request.GET.get('page')
-    products = paginator.get_page(page_number)
-    
+    products = Product.objects.all()[:6]
     template_name = 'products/index.html'
     context = {'products': products}
     return render(request, template_name, context)
@@ -22,7 +17,7 @@ def all_products_view(request):
     f = ProductFilter(request.GET, queryset=products_list)
     products_list = f.qs
 
-    paginator = Paginator(products_list, 8) # Show 25 contacts per page.
+    paginator = Paginator(products_list, 8) 
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
     
